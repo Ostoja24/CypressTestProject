@@ -1,6 +1,9 @@
-const { defineConfig } = require("cypress");
+import { defineConfig } from "cypress";
+export default defineConfig({
+  env: {
+    baseUrl: "https://automationexercise.com/",
+  },
 
-module.exports = defineConfig({
   e2e: {
     setupNodeEvents(on, config) {
       // implement node event listeners here
