@@ -1,11 +1,6 @@
-Projekt testowy w Cypressie:
-Obejmuje on framework testowy który wykonuje testy:
-- Frontend dla strony automationexercise.com
-- Backend dla API: https://restful-booker.herokuapp.com/apidoc/index.html#api-Auth-CreateToken
-Przy testach backendowych tworzymy pattern przy requestach do danego obiektu czyli:
-- Booking
-- Auth
-- Ping
-Każdy z nich to osobna klasa która będzie zawierać requesty oparte na base URL requeście
-Projekt posiada workflow do puszczania testów wraz z uzyskaniem raportu 
-
+Cypress test project:
+It includes a testing framework that executes tests:
+- Frontend for automationexercise.com website
+- Backend for the API for the same site (in progress)
+For project was used a POM (Page Object Model)
+The project has a workflow for releasing tests along with getting a report within workflow with scheduling workflow at 7 AM.
