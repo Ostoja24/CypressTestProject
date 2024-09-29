@@ -9,6 +9,8 @@ export class HomePage extends BasePage {
     private readonly carouselButton:string = "//div[@class='fa fa-angle-<direction>']";
     private readonly popupMessage: string = "//div[@class='modal-content']//div[@class='modal-body']";
     private readonly popupViewCart: string = "//u";
+    private readonly carouselPoint: string = "//ol[@class='carousel-indicators']//li[@data-slide-to='<index>']";
+    private readonly productImage: string = "//div[@class='productinfo text-center']//p[text()='<productName>']/preceding-sibling::img";
     constructor(){
         super()
     }
@@ -46,9 +48,11 @@ export class HomePage extends BasePage {
             }
         }
     }
-    verifyTheCarouselPartSet(){
-
-    }
+    verifyTheCarouselPartSet(index: string){
+        const carouselPointChosen:string = this.carouselPoint.replace('<index>',index) 
+        cy.xpath(carouselPointChosen).invoke('attr','class').should('eq','active')
+        }
+    
     visitHomePage(){
         this.visit("/");
     }
@@ -61,5 +65,12 @@ export class HomePage extends BasePage {
     clickOnViewCartOnPopup(){
         return cy.xpath(this.popupViewCart).click();
     }
-    
+    setTheCarouselPartSet(index: string){
+        const carouselPointChosen: string = this.carouselPoint.replace('<index>',index) 
+        cy.xpath(carouselPointChosen).click()
+    }
+    verifyIfImageIsVisibleInCard(nameOfProduct: string){
+        const productImageChosen = this.productImage.replace('<productName>',nameOfProduct);
+        cy.xpath(productImageChosen).should('be.visible');
+    }
 }
